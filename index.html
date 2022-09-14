@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>An App </title>
+    
+   
+    
+    
+<body>
+    <div class="container">
+        <div class="tab tab-1">
+            <table id="table" border="1">
+                <tr>
+                    <th>Product Id</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                </tr>
+
+            </table>
+            <div class="tab tab-2">
+                Product Id :<input typ="text" name="ProductId" id="ProductId">
+                Product Name :<input typ="text" name="ProductName" id="ProductName">
+                Product Price :<input typ="text" name="ProductPrice" id="ProductPrice">
+                <button onclick="addHtmlTableRow();">Add Product</button>
+        </div>
+    </div>
+    <style>
+        .container{
+            overflow: hidden;
+        }
+        .tab{
+            float:left;
+        }
+        .tab-2{
+            margin-left: 50px;
+        }
+        .tab-2 input{ display: block;
+            margin-bottom: 10px;
+            
+        }
+
+        
+            
+        
+            
+        
+    </style>
+   
+    
+</head>
+
+
+</body>
+<script>
+    // add ROW
+    function addHtmlTableRow()
+    {
+        // GET THE TABLE bY ID
+        // create a new row and cells
+        
+        var table = document.getElementById("table"),
+        newRow = table.insertRow(table.length),
+        cell1 = newRow.insertCell(0),
+        cell2 = newRow.insertCell(1),
+        cell3 = newRow.insertCell(2),
+        ProductId = document.getElementById("ProductId").value,
+        ProductName = document.getElementById("ProductName").value,
+        ProductPrice = document.getElementById("ProductPrice").value;
+// console.log(ProductId)
+// console.log(ProductName)
+// console.log(ProductPrice)
+        cell1.innerHTML=ProductId;
+        // cell1.innerHtml = ProductId ;
+        cell2.innerHTML = ProductName ;
+        cell3.innerHTML = ProductPrice ;
+        console.log(cell1);
+
+        SelectedRowToInput();
+
+    }
+    function SelectedRowToInput(){
+        var rIndex , table = document.getElementById("table");
+        for (var i = 1; i < table.rows.length; i++)
+        {
+            table.rows[i].onclick = function()
+            {
+                rIndex = this.rowIndex ;
+                console.log(rIndex);
+            };
+        }
+        
+
+
+    }
+    SelectedRowToInput();
+</script>
+</html>
